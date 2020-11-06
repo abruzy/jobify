@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import Loader from './Loader';
-import DevProfile from './DevProfile';
+import DevPage from './DevPage';
+import JobPage from './JobPage';
 
 const size = 20;
 const aggregate = false;
@@ -30,6 +31,7 @@ function SearchBar() {
             term: searchValue,
           },
         });
+        console.log(data);
         setSearchResult(data.data.results);
       } else {
         const data = await axios.post(jobApiURL, {
@@ -65,7 +67,9 @@ function SearchBar() {
         <button type="submit" className="bg-purple-600 text-white py-2 px-8 ml-6 rounded">Search</button>
       </form>
       { loading && <Loader /> }
-      <DevProfile searchResult={searchResult} />
+      {
+        type === 'Job' ? <JobPage searchResult={searchResult} /> : <DevPage searchResult={searchResult} />
+      }
     </div>
   );
 }
