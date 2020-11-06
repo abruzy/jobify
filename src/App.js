@@ -1,7 +1,8 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
-import NavBar from './components/NavBar';
+import Home from './Layouts/Home.layout';
+import DevListing from './Layouts/DevListing.layout';
 
 import './App.scss';
 
@@ -9,7 +10,8 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <NavBar />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/results" component={DevListing} />
       </Switch>
     </div>
   );
