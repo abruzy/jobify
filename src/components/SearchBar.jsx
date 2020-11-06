@@ -30,16 +30,13 @@ function SearchBar() {
             term: searchValue,
           },
         });
-        console.log(data);
         setSearchResult(data.data.results);
-        console.log(searchResult);
       } else {
         const data = await axios.post(jobApiURL, {
           name: {
             term: searchValue,
           },
         });
-        console.log(data);
         setSearchResult(data.data.results);
       }
     } catch (error) {

@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function DevProfile({ searchResult }) {
   return (
@@ -39,5 +38,9 @@ function DevProfile({ searchResult }) {
     </div>
   );
 }
+
+DevProfile.propTypes = {
+  searchResult: PropTypes.string.isRequired,
+};
 
 export default DevProfile;

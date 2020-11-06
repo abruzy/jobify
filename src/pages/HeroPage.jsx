@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -13,6 +14,7 @@ const peopleApiURL = `https://search.torre.co/people/_search/?[offset=${offset}&
 function HeroPage() {
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState('Job');
+  const [searchResult, setSearchResult] = useState([]);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -22,19 +24,19 @@ function HeroPage() {
 
     try {
       if (type === 'People') {
-        const { data } = await axios.post(peopleApiURL, {
+        const data = await axios.post(peopleApiURL, {
           name: {
             term: searchValue,
           },
         });
-        console.log(data);
+        setSearchResult(data.data.results);
       } else {
-        const { data } = await axios.post(jobApiURL, {
+        const data = await axios.post(jobApiURL, {
           name: {
             term: searchValue,
           },
         });
-        console.log(data);
+        setSearchResult(data);
       }
     } catch (error) {
       throw new Error(error);
