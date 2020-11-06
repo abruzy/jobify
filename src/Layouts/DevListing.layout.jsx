@@ -1,13 +1,15 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 import SearchBar from '../components/SearchBar';
 import SideNav from '../components/SideNav';
 
-function DevListing() {
+function DevListing({ match }) {
+  const { id, type } = match.params;
   return (
     <div className="flex">
       <SideNav />
-      <SearchBar />
+      <SearchBar id={id} type={type} />
     </div>
   );
 }

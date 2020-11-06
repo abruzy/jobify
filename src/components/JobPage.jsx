@@ -1,17 +1,19 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 function JobPage({ searchResult }) {
+  console.log(searchResult);
   return (
     <div className="overflow-y-auto">
       {
-        searchResult.map(result => (
-          <div key={result.id} className="shadow-xs hover:shadow-xl bg-white p-4 mb-6">
+        searchResult && searchResult.map((result, resultIdx) => (
+          <div key={resultIdx} className="shadow-xs hover:shadow-xl bg-white p-4 mb-6">
             <div className="flex justify-between">
               <div className="flex">
                 {
-                  result.organizations.map(pic => (
+                  result && result.organizations && result.organizations.map(pic => (
                     <div key={pic.id} className="mr-3 h-40">
                       <img src={pic.picture} alt="logo" className="max-w-full object-cover h-32" />
                     </div>
@@ -23,9 +25,9 @@ function JobPage({ searchResult }) {
                   <div className="flex">
                     <img src="/vectors/location.svg" alt="Location" />
                     {/* {
-                      result.locations === [] ? 'No Location Provided' : result.locations[0]
+                      result.locations.length < 1 ? 'No Location Provided' : result.locations[0]
                     } */}
-                    <p className="text-base ml-1 text-gray-600">{result.locations[0]}</p>
+                    {/* <p className="text-base ml-1 text-gray-600">{result.locations}</p> */}
                   </div>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // const page = 0;
 const size = 20;
@@ -15,6 +16,7 @@ function HeroPage() {
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState('Job');
   const [searchResult, setSearchResult] = useState([]);
+  const [value, setValue] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -60,7 +62,7 @@ function HeroPage() {
       <div className="wrap flex-grow">
         <form onSubmit={e => handleSubmit(e)} className="mb-5 bg-white h-16 shadow-xs flex items-center px-4 rounded-xl">
           <img src="/vectors/search.svg" alt="search" />
-          <input type="text" name="search" className="flex-grow ml-3 font-semibold text-lg text-gray-700 focus:outline-none" placeholder="Search something" required />
+          <input type="text" name="search" onChange={e => setValue(e.target.value)} className="flex-grow ml-3 font-semibold text-lg text-gray-700 focus:outline-none" placeholder="Search something" required />
           <select
             onChange={e => {
               const selectedType = e.target.value;
@@ -71,7 +73,9 @@ function HeroPage() {
             <option value="Job">Jobs</option>
             <option value="People">People</option>
           </select>
-          <button type="submit" className="bg-purple-600 text-white py-2 px-8 ml-6 rounded">Search</button>
+          <Link to={`/search_page/${value}/${type}`}>
+            <button type="submit" className="bg-purple-600 text-white py-2 px-8 ml-6 rounded">Search</button>
+          </Link>
         </form>
       </div>
     </div>
