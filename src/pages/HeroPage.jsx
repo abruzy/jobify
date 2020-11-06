@@ -32,11 +32,13 @@ function HeroPage() {
         setSearchResult(data.data.results);
       } else {
         const data = await axios.post(jobApiURL, {
-          name: {
-            term: searchValue,
+          'skill/role': {
+            text: searchValue,
+            experience: 'potential-to-develop',
           },
         });
-        setSearchResult(data);
+        console.log(data);
+        setSearchResult(data.data.results);
       }
     } catch (error) {
       throw new Error(error);

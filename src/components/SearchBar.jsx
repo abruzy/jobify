@@ -33,8 +33,9 @@ function SearchBar() {
         setSearchResult(data.data.results);
       } else {
         const data = await axios.post(jobApiURL, {
-          name: {
-            term: searchValue,
+          'skill/role': {
+            text: searchValue,
+            experience: 'potential-to-develop',
           },
         });
         setSearchResult(data.data.results);
