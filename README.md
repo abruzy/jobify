@@ -16,12 +16,14 @@ An app built for individuals looking for developers or jobs across the globoe.
 ## Install
 
 ```sh
-  git git@github.com:abruzy/jobify.git
-  cd ~/jobify
+  git clone git@github.com:abruzy/jobify.git
+  cd jobify
   run yarn install in your terminal
   ```
 
   ## Usage
+
+  split your terminal in two places and run the following command below
 
   run 
 
