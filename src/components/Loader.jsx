@@ -9,7 +9,6 @@ function Loader() {
         <div className="h-32 bg-gray-400 rounded" />
         <div className="h-32 bg-gray-400 rounded" />
         <div className="h-32 bg-gray-400 rounded" />
-        <div className="h-32 bg-gray-400 rounded" />
       </div>
     </div>
   );
