@@ -31,7 +31,6 @@ function SearchBar() {
             term: searchValue,
           },
         });
-        console.log(data);
         setSearchResult(data.data.results);
       } else {
         const data = await axios.post(jobApiURL, {

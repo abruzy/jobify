@@ -37,7 +37,6 @@ function HeroPage() {
             experience: 'potential-to-develop',
           },
         });
-        console.log(data);
         setSearchResult(data.data.results);
       }
     } catch (error) {
