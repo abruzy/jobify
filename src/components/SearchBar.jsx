@@ -32,7 +32,7 @@ function SearchBar() {
           },
         });
         setSearchResult(data.data.results);
-      } else {
+      } else if (type === 'Job') {
         const data = await axios.post(jobApiURL, {
           'skill/role': {
             text: searchValue,
