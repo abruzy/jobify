@@ -1,10 +1,16 @@
 import React from 'react';
-import './App.css';
+import { Switch } from 'react-router-dom';
+
+import NavBar from './components/NavBar';
+
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      Jobify Page
+      <Switch>
+        <NavBar />
+      </Switch>
     </div>
   );
 }
