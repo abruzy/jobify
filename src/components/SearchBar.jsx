@@ -16,21 +16,22 @@ const peopleApiURL = `https://search.torre.co/people/_search/?[offset=${offset}&
 
 function SearchBar({ id, type }) {
   const [loading, setLoading] = useState(false);
-  const [searchType, setSearchType] = useState('Job');
+  const [searchType, setSearchType] = useState('job');
   const [searchResult, setSearchResult] = useState([]);
+  const [queryType, setQueryType] = useState('job');
 
   const fetchData = async (query, type) => {
-    console.log(type, query);
     setSearchResult([]);
+    setQueryType(type);
     try {
-      if (type === 'People') {
+      if (type === 'people') {
         const data = await axios.post(peopleApiURL, {
           name: {
             term: query,
           },
         });
         setSearchResult(data.data.results);
-      } else if (type === 'Job') {
+      } else if (type === 'job') {
         const data = await axios.post(jobApiURL, {
           'skill/role': {
             text: query,
@@ -50,11 +51,10 @@ function SearchBar({ id, type }) {
     if (id && type) {
       fetchData(id, type);
     }
-  }, []);
+  }, [id, type]);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setLoading(true);
 
     const searchValue = e.target.search.value;
 
@@ -73,18 +73,18 @@ function SearchBar({ id, type }) {
           }}
           className="bg-transparent focus:outline-none w-20"
         >
-          <option value="Job">Jobs</option>
-          <option value="People">People</option>
+          <option value="job">Jobs</option>
+          <option value="people">People</option>
         </select>
         <button type="submit" className="bg-purple-600 text-white py-2 px-8 ml-6 rounded">Search</button>
       </form>
-      { loading && <Loader /> }
+      { (loading || searchResult.length === 0) && <Loader /> }
       {
-        type === 'Job' && searchResult.length > 0 && <JobPage searchResult={searchResult} />
+        queryType === 'job' && searchResult.length > 0 && <JobPage searchResult={searchResult} />
       }
 
       {
-        type === 'People' && searchResult.length > 0 && <DevPage searchResult={searchResult} />
+        queryType === 'people' && searchResult.length > 0 && <DevPage searchResult={searchResult} />
       }
     </div>
   );

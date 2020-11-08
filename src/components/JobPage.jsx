@@ -1,10 +1,9 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 function JobPage({ searchResult }) {
-  console.log(searchResult);
   return (
     <div className="overflow-y-auto">
       {
@@ -24,10 +23,7 @@ function JobPage({ searchResult }) {
                   <p className="text-gray-600 text-base pb-1">{result.type}</p>
                   <div className="flex">
                     <img src="/vectors/location.svg" alt="Location" />
-                    {/* {
-                      result.locations.length < 1 ? 'No Location Provided' : result.locations[0]
-                    } */}
-                    {/* <p className="text-base ml-1 text-gray-600">{result.locations}</p> */}
+                    <p className="text-base ml-1 text-gray-600">{result && result.locations && result.locations[0] ? result.locations[0] : 'No location supplied'}</p>
                   </div>
                 </div>
               </div>

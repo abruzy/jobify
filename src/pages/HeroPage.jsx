@@ -14,7 +14,7 @@ const peopleApiURL = `https://search.torre.co/people/_search/?[offset=${offset}&
 
 function HeroPage() {
   const [loading, setLoading] = useState(false);
-  const [type, setType] = useState('Job');
+  const [type, setType] = useState('job');
   const [searchResult, setSearchResult] = useState([]);
   const [value, setValue] = useState('');
 
@@ -25,14 +25,14 @@ function HeroPage() {
     const searchValue = e.target.search.value;
 
     try {
-      if (type === 'People') {
+      if (type === 'people') {
         const data = await axios.post(peopleApiURL, {
           name: {
             term: searchValue,
           },
         });
         setSearchResult(data.data.results);
-      } else {
+      } else if (type === 'job') {
         const data = await axios.post(jobApiURL, {
           'skill/role': {
             text: searchValue,
@@ -70,10 +70,10 @@ function HeroPage() {
             }}
             className="bg-transparent focus:outline-none w-20"
           >
-            <option value="Job">Jobs</option>
-            <option value="People">People</option>
+            <option value="job">Jobs</option>
+            <option value="people">People</option>
           </select>
-          <Link to={`/search_page/${value}/${type}`}>
+          <Link to={`/search-results/${value}/${type}`}>
             <button type="submit" className="bg-purple-600 text-white py-2 px-8 ml-6 rounded">Search</button>
           </Link>
         </form>
