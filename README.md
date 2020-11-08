@@ -5,7 +5,7 @@ An app built for individuals looking for developers or jobs across the globoe.
 ![Jobify](./jobify.png)
 
 
-## [Live version](https://jobify-7k8g8ix0y.vercel.app/)
+## [Live version](https://jobify-1ttgyx8o9.vercel.app/)
 
 ## Technologies
 
